@@ -215,6 +215,12 @@ To this end use the flag `--shards [NUMBER OF SHARDS]` and start jobs with `--sh
 Run all shards with the same configuration, the output path will be adjusted automatically.
 Use `python japan.py --action merge_hdf5 --input [PATH OF ALL SHARDS] --output [HDF5 OUTPUT PATH]`.
 
+Datasets exported as CSV files (`manifest.csv`, `event_metadata.csv`, `stations.csv`, `waveforms.csv`) can be converted to the HDF5 format using
+```
+python csv_to_hdf5.py --input [CSV FOLDER] --output [HDF5 OUTPUT PATH]
+```
+Events are sorted by time, so the default split is temporal.
+
 ## Baselines
 
 Baseline implementations for magnitude estimation and early warning are contained in `mag_baselines.py` and `pga_baselines.py`.
