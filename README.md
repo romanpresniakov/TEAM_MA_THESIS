@@ -221,6 +221,22 @@ python csv_to_hdf5.py --input [CSV FOLDER] --output [HDF5 OUTPUT PATH]
 ```
 Events are sorted by time, so the default split is temporal.
 
+To export the events of one split of a training config back into the CSV format use
+```
+python export_split.py --config [CONFIG].json --input [CSV FOLDER] --output [OUTPUT FOLDER] --split test
+```
+This writes `split.csv` with the split of each event, as well as `event_metadata_test.csv`, `stations_test.csv` and `waveforms_test.csv`.
+
+## Export
+
+A trained model can be exported as TensorFlow SavedModel using
+```
+python export_saved_model.py --experiment_path [WEIGHTS_PATH] --output [SAVEDMODEL PATH]
+```
+The inputs are `waveforms` and `coords`, the outputs `magnitude` and `location`.
+Preprocessing (mean removal, zero padding, station selection) and the conversion of the location output to coordinates are not part of the SavedModel.
+Details are documented in `export_saved_model.py`.
+
 ## Baselines
 
 Baseline implementations for magnitude estimation and early warning are contained in `mag_baselines.py` and `pga_baselines.py`.
